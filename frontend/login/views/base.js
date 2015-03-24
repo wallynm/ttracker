@@ -5,21 +5,18 @@ define(['text!frontend/login/templates/base.html'],
     className : 'login-form',
     events :
     {
-      'click #login-btn ' : 'checkCredentials'
+      'click #btn-login' : 'checkCredentials'
     },
 
     initialize : function()
     {
       var self = this;
-      self.logged = App.models.User.get('logged');
+      self.logged = App.User.get('logged');
     },
 
     checkCredentials : function()
     {
-      App.Router.navigate('#timeline', {trigger: true});
-      var $region = $('#login-content');
-
-      App.models.User.set({
+      App.User.set({
         logged : true,
         facebookID : 5732544234,
         firstName : 'Wallysson',
@@ -29,12 +26,7 @@ define(['text!frontend/login/templates/base.html'],
         email : 'wally.nm@gmail.com',
       }).save();
 
-
-      $region.css({'opacity': 0});
-      setTimeout(function(){
-        $region.removeAttr('style').addClass('hide');
-
-      }, 600);
+      App.Router.navigate('#boards', {trigger: true});
     },
 
     onRender : function ()

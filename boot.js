@@ -13,7 +13,9 @@ requirejs.config({
 
     // ADDONS
     BackboneStick   : 'public/plugins/vendor/backbone.stickit/backbone.stickit',
-    bootstrap      : 'public/plugins/vendor/bootstrap/dist/js/bootstrap',
+    localstorage    : 'public/plugins/vendor/backbone.localStorage/backbone.localStorage',
+    bootstrap       : 'public/plugins/vendor/bootstrap/dist/js/bootstrap',
+    Sortable        : 'public/plugins/vendor/Sortable/jquery.fn.sortable',
 
     // ModulesSystem
     userModel : 'frontend/user/models/user'
@@ -33,7 +35,7 @@ requirejs.config({
   }
 });
 
-define(['marionette', 'underscore', 'text', 'bootstrap'], function () {
+define(['userModel', 'marionette', 'underscore', 'text', 'bootstrap', 'localstorage'], function (userModel) {
 
   // Variaveis base instanciadas no sistema
   window.App = new Backbone.Marionette.Application();
@@ -44,37 +46,28 @@ define(['marionette', 'underscore', 'text', 'bootstrap'], function () {
 
   mainRouter = Backbone.Router.extend({
     routes : {
-      ""         : "userLogin",
+      ""         : "login",
+      "login"     : "login",
+      "boards"   : "boards",
       "logout"   : "userLogout",
-      "timeline" : "timelinePage",
     },
 
-    timelinePage : function()
+    boards : function()
     {
-      // Basico para carregamento do sistema
-      require(['frontend/core/sidebar/views/leftsidebar', 'frontend/core/header/views/base', 'frontend/core/main/views/timeline'], function ( leftsidebar, header, timeline) {
-        App.leftSidebar.show( new leftsidebar() );
-        App.headerRegion.show( new header() );
-        App.mainRegion.show( new timeline() );
-      });
-    },
-
-    userLogin: function ()
-    {
-      require(['frontend/login/views/base'], function (view) {
-        App.loginRegion.show( new view() );
+      require(['frontend/boards/views/boards'], function ( issueBoard ) {
+        App.mainRegion.show( new issueBoard() );
       });
     },
 
     userLogout: function ()
     {
-      App.models.User.destroy();
+      App.User.destroy();
       App.Router.navigate('#', {trigger: true});
     }
   });
 
   // Instancia o model de user
-  App.models.User = new userModel();
+  App.User = new userModel();
 
 
   // Configura o router
@@ -82,20 +75,32 @@ define(['marionette', 'underscore', 'text', 'bootstrap'], function () {
 
   // Configura as regioes do sistema
   App.addRegions({
-    leftSidebar  : "#left-drawer",
     headerRegion : "#main-header",
     mainRegion   : "#main-content",
-    modalRegion  : "#modal-content",
-    loginRegion  : "#login-content"
   });
 
 
 
   App.on('start', function() {
-    Backbone.history.start();
 
-    if( App.models.User.isLogged() !== true ){
-      App.Router.navigate('#', {trigger: true});
+    if( App.User.isLogged() !== true ){
+
+      require(['frontend/login/views/base'], function (loginView) {
+        App.Router.navigate('#', {trigger: true});
+        App.mainRegion.show( new loginView() );
+      });
+
+    } else {
+
+      // Basico para carregamento do sistema
+      require(['frontend/core/views/appHeader', 'frontend/core/views/appBody'], function (header, body) {
+        App.Router.navigate('#boards', {trigger: true});
+        App.headerRegion.show( new header() );
+        App.mainRegion.show( new body() );
+      });
+
+      Backbone.history.start();
+
     }
   });
 
