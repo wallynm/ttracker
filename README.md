@@ -1,16 +1,10 @@
-# Ttracker
-
-## A Kanban Issue Tracker
+# TTracker - Kanban Issue Tracker
 
 Task Tracker (TTracker) it's project focused into issues solving integrated with a Kanban board, inside you can keep track of everything. Comments, subtasks, milestones into due and many other funcitons.
 
-## Code Example
-
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
-
 ## Motivation
 
-The project started because a need of a app integrated with many with the git tools
+This project has the main reason to make issues management a way better, including several integrations alongside.
 
 ## Installation
 
