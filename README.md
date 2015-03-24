@@ -9,17 +9,49 @@ This project has the main reason to make issues management a way better, includi
 ## Installation
 
 In order to install and run the app you will need to install nodejs and bower into the server which will install all the dependencies needed into the frontend app:
-* npm install bower -g
-* bower install
+
+    npm install bower -g
+    bower install
 
 
-## API Reference
+## CSS Structure
 
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+As base css architecture we use Bottstrap 3 with our own modifications, we don't touch any of the original files of bootstrap less files, so keep they untouchable, any needed change apply it inside of the /public/less directory and @import your added file into main.less, this way everything keeps more easily to maintain.
 
-## Contributors
+To build and see any visual change you need to run the gulp file inside build folder, it will take care of compile all the less files and apply any new change into the main.css file.
 
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
+To build just run this commands:
+
+    cd build
+    gulp less
+
+And wait untill it's done
+
+## Roadmap 1.0.0
+
+- Github integration for login
+- Bitbucket integration for login
+- Creation of projects based on the repositories already found into the user account
+- Basic layout for issues tracking
+- Open issues from TTracker board
+- Close issues from TTracker board
+- Set labels from TTracker board
+
+## Roadmap 1.1.0
+
+- Gitlab integration
+- Ability to comment issues without need to leave TTracker board
+- Create subtasks inside TTracker issues (Analyse if we're going to create sub issues linked, or just a refference to a simple checklist)
+- Filtering issues based on Milestones
+- Filtering issues based on Labels
+
+##Contributing
+
+1. Fork it
+2. Create your feature branch (git checkout -b my-new-feature)
+3. Commit your changes (git commit -am 'Add some feature')
+4. Push to the branch (git push origin my-new-feature)
+5. Create new Pull Request
 
 ## License
 
