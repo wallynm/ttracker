@@ -1,6 +1,6 @@
 # TTracker - Kanban Issue Tracker
 
-Task Tracker (TTracker) it's project focused into issues solving integrated with a Kanban board, inside you can keep track of everything. Comments, subtasks, milestones into due and many other funcitons.
+Task Tracker (TTracker) it's project focused into issues solving integrated with a Kanban board, inside you can keep track of everything. Comments, subtasks, milestones into due and many other functions.
 
 ## Motivation
 
