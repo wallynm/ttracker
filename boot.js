@@ -13,98 +13,91 @@ requirejs.config({
 
     // ADDONS
     BackboneStick   : 'public/plugins/vendor/backbone.stickit/backbone.stickit',
-    Bootrstrap      : 'public/plugins/vendor/bootstrap/dist/js/bootstrap.js',
+    bootstrap      : 'public/plugins/vendor/bootstrap/dist/js/bootstrap',
 
     // ModulesSystem
     userModel : 'frontend/user/models/user'
   },
 
   shim : {
+    bootstrap: {
+      deps: ["jquery"],
+      exports: "bootstrap"
+    },
 
     // main application
     userModel: {
-      deps: ["backbone", "marionette", "underscore", "localstorage"],
+      deps: ["backbone", "marionette", "underscore"],
       exports: "userModel"
     }
   }
 });
 
-define([
-  'userModel',
-  'marionette',
-  'underscore',
-  'text',
-  'snap',
-  'iscroll',
-  'ratchet',
-  'fontsmoothie'],
-  function (userModel, FastClick) {
+define(['marionette', 'underscore', 'text', 'bootstrap'], function () {
 
-    // Variaveis base instanciadas no sistema
-    window.App = new Backbone.Marionette.Application();
-    window.App.models   = {};
-    window.App.Name     = 'spotted';
-    window.App.Language = 'pt-BR';
-    window.App.BaseUrl  = (location.hostname == 'localhost') ? 'http://localhost/spotted/' : '';
+  // Variaveis base instanciadas no sistema
+  window.App = new Backbone.Marionette.Application();
+  window.App.Name     = 'spotted';
+  window.App.Language = 'pt-BR';
+  window.App.BaseUrl  = (location.hostname == 'localhost') ? 'http://localhost/ttracker/' : '';
 
 
-    mainRouter = Backbone.Router.extend({
-      routes : {
-        ""         : "userLogin",
-        "logout"   : "userLogout",
-        "timeline" : "timelinePage",
-      },
+  mainRouter = Backbone.Router.extend({
+    routes : {
+      ""         : "userLogin",
+      "logout"   : "userLogout",
+      "timeline" : "timelinePage",
+    },
 
-      timelinePage : function()
-      {
-        // Basico para carregamento do sistema
-        require(['frontend/core/sidebar/views/leftsidebar', 'frontend/core/header/views/base', 'frontend/core/main/views/timeline'], function ( leftsidebar, header, timeline) {
-          App.leftSidebar.show( new leftsidebar() );
-          App.headerRegion.show( new header() );
-          App.mainRegion.show( new timeline() );
-        });
-      },
+    timelinePage : function()
+    {
+      // Basico para carregamento do sistema
+      require(['frontend/core/sidebar/views/leftsidebar', 'frontend/core/header/views/base', 'frontend/core/main/views/timeline'], function ( leftsidebar, header, timeline) {
+        App.leftSidebar.show( new leftsidebar() );
+        App.headerRegion.show( new header() );
+        App.mainRegion.show( new timeline() );
+      });
+    },
 
-      userLogin: function ()
-      {
-        require(['frontend/login/views/base'], function (view) {
-          App.loginRegion.show( new view() );
-        });
-      },
+    userLogin: function ()
+    {
+      require(['frontend/login/views/base'], function (view) {
+        App.loginRegion.show( new view() );
+      });
+    },
 
-      userLogout: function ()
-      {
-        App.models.User.destroy();
-        App.Router.navigate('#', {trigger: true});
-      }
-    });
+    userLogout: function ()
+    {
+      App.models.User.destroy();
+      App.Router.navigate('#', {trigger: true});
+    }
+  });
 
-    // Instancia o model de user
-    App.models.User = new userModel();
+  // Instancia o model de user
+  App.models.User = new userModel();
 
 
-    // Configura o router
-    App.Router = new mainRouter();
+  // Configura o router
+  App.Router = new mainRouter();
 
-    // Configura as regioes do sistema
-    App.addRegions({
-      leftSidebar  : "#left-drawer",
-      headerRegion : "#main-header",
-      mainRegion   : "#main-content",
-      modalRegion  : "#modal-content",
-      loginRegion  : "#login-content"
-    });
+  // Configura as regioes do sistema
+  App.addRegions({
+    leftSidebar  : "#left-drawer",
+    headerRegion : "#main-header",
+    mainRegion   : "#main-content",
+    modalRegion  : "#modal-content",
+    loginRegion  : "#login-content"
+  });
 
 
 
-App.on('start', function() {
-  Backbone.history.start();
+  App.on('start', function() {
+    Backbone.history.start();
 
+    if( App.models.User.isLogged() !== true ){
+      App.Router.navigate('#', {trigger: true});
+    }
+  });
 
-
-  if( App.models.User.isLogged() !== true ){
-    App.Router.navigate('#', {trigger: true});
-  }
-});
-App.start();
+  App.start();
 });

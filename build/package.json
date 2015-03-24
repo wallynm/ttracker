@@ -1,0 +1,34 @@
+{
+  "name": "ttracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "boot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://wallynm@github.com/wallynm/ttracker.git"
+  },
+  "author": "Wallysson Nunes da Mota",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wallynm/ttracker/issues"
+  },
+  "homepage": "https://github.com/wallynm/ttracker",
+  "dependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-less": "~0.11.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "gulp": "^3.8.11",
+    "gulp-jshint": "^1.9.4",
+    "gulp-minify-css": "^1.0.0",
+    "gulp-minify-html": "^1.0.1",
+    "gulp-replace": "^0.5.3",
+    "gulp-requirejs": "^0.1.3",
+    "gulp-strip-debug": "^1.0.2",
+    "gulp-uglify": "^1.1.0",
+    "gulp-util": "^3.0.4",
+    "jit-grunt": "~0.7.0"
+  }
+}
