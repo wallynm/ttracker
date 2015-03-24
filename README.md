@@ -40,8 +40,6 @@ To build just run this commands:
     cd build
     gulp less
 
-And wait untill it's done
-
 ## Roadmap 1.0.0
 
 - Github integration for login
