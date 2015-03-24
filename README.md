@@ -6,6 +6,21 @@ Task Tracker (TTracker) it's project focused into issues solving integrated with
 
 This project has the main reason to make issues management a way better, including several integrations alongside.
 
+## Technologies
+Not every library is listed here, only the core ones, a list of each lib can be found at the end of this file into the section of credits.
+These are the main thechnologies/libs been used:
+
+- [NodeJS](https://nodejs.org/)
+- [MongoDB](https://mongodb.org/) (OR another non-relational database)
+- [jQuery](https://jquery.com)
+- [Backbone](http://backbonejs.org/)
+- [Marionette](http://marionettejs.com/)
+- [RequireJS](http://requirejs.org/)
+- [UnderscoreJS](http://underscorejs.org/)
+- [Bootstrap](http://getbootstrap.com/)
+
+
+
 ## Installation
 
 In order to install and run the app you will need to install nodejs and bower into the server which will install all the dependencies needed into the frontend app:
