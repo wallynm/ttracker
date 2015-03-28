@@ -1,4 +1,4 @@
-define(['text!frontend/login/templates/base.html'],
+define(['text!frontend/modules/login/templates/base.html'],
   function( tpl ) {
   return Backbone.Marionette.ItemView.extend({
     template : _.template(tpl),
@@ -11,12 +11,12 @@ define(['text!frontend/login/templates/base.html'],
     initialize : function()
     {
       var self = this;
-      self.logged = App.User.get('logged');
+      self.logged = window.App.User.get('logged');
     },
 
     checkCredentials : function()
     {
-      App.User.set({
+      window.App.User.set({
         logged : true,
         facebookID : 5732544234,
         firstName : 'Wallysson',
@@ -26,7 +26,7 @@ define(['text!frontend/login/templates/base.html'],
         email : 'wally.nm@gmail.com',
       }).save();
 
-      App.Router.navigate('#boards', {trigger: true});
+      window.App.Router.navigate('#boards', {trigger: true});
     },
 
     onRender : function ()
