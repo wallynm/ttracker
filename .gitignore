@@ -1,1 +1,3 @@
 /public/plugins/vendor/
+.jshintrc
+.tern-project
