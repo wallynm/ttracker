@@ -1,4 +1,5 @@
-# ttracker.io - Kanban Issue Tracker - [A demo of the project](http://ttracker.io)
+# ttracker.io - Kanban Issue Tracker
+[A demo of the project](http://ttracker.io)
 
 [![Join the chat at https://gitter.im/wallynm/ttracker](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/wallynm/ttracker?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
