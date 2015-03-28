@@ -82,7 +82,7 @@ define(['userModel', 'marionette', 'underscore', 'text', 'bootstrap', 'localstor
 
     if( window.App.User.isLogged() !== true ){
 
-      require(['frontend/login/views/base'], function (LoginView) {
+      require(['modules/frontend/login/views/base'], function (LoginView) {
         window.App.Router.navigate('#', {trigger: true});
         window.App.mainRegion.show( new LoginView() );
       });
