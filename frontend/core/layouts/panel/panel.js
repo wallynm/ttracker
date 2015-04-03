@@ -1,5 +1,5 @@
-define(function(){
-  return Backbone.Marionette.LayoutView.extend({
+define(['frontend/core/common/layout'], function(Layout) {
+  return Layout.extend({
     tagName: 'div',
     className: 'layout layout-panel',
 
@@ -7,9 +7,7 @@ define(function(){
       content: '.content'
     },
 
-    initialize: function(){
-
-      alert('123');
+    initialize: function() {
       console.warn('123');
     }
   });

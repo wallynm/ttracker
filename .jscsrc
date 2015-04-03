@@ -1,0 +1,14 @@
+{
+  "preset": "google",
+  "fileExtensions": [ ".js", "jscs" ],
+
+  "requireParenthesesAroundIIFE": true,
+  "maximumLineLength": 200,
+  "validateLineBreaks": "LF",
+
+  "safeContextKeyword": "self",
+
+  "excludeFiles": [
+      "public/**"
+  ]
+}
