@@ -1,12 +1,13 @@
 define(['backbone.radio', 'backbone.subroute'], function() {
 
   return Backbone.SubRoute.extend({
+    createTrailingSlashRoutes: true,
 
     constructor : function() {
       this.channel = Backbone.Radio.channel('router');
       this.on('all', this._onRouterEvent);
       this.listenTo(Backbone.history, 'route', this._onHistoryRoute);
-      Marionette.AppRouter.apply(this, arguments);
+      Backbone.SubRoute.apply(this, arguments);
     },
 
     _onRouterEvent : function() {
@@ -17,6 +18,8 @@ define(['backbone.radio', 'backbone.subroute'], function() {
     },
 
     _onHistoryRoute : function(router) {
+      console.warn('Event _onHistoryRoute ---> ' + router);
+
       if (this === router) {
         this.active = true;
       } else {
@@ -24,36 +27,37 @@ define(['backbone.radio', 'backbone.subroute'], function() {
       }
     },
 
-    execute : function() {
-      var args = arguments;
-      var callback = args[0];
-
+    execute : function(callback, args) {
+      var self = this;
       if (!this.active) {
         this.triggerMethod('before:enter', args);
       }
 
-      this.triggerMethod('before:route', args);
+      self.triggerMethod('before:route', args);
 
       $.when(this._execute(callback, args)).then(function() {
-        if (!this.active) {
-          this.triggerMethod('enter', args);
+        if (!self.active) {
+          self.triggerMethod('enter', args);
         }
-        this.triggerMethod('route', args);
+        self.triggerMethod('route', args);
       });
     },
 
-    _execute : function() {
-      var args = arguments;
-      var callback = args[0];
-      var route = callback.apply(this, args);
+    _execute : function(callback, args) {
+      $.when(callback.apply(this, args))
+      .done(function(baseView) {
 
-      console.warn('Não tenho certeza se esta instancia aplicada esta correta, efeutar devidos testes');
-      if (route instanceof Backbone.SubRouter) {
-        route.router = this;
+        console.warn('constructor name: ', baseView.constructor.name);
 
-        console.warn('ESTA CLASSE DISPARA O ROUTE.ENTER QUE EU ESTAVA PROCURANDO QUE FAZ O CONSTROLE DO FETCH E DAS PROMISSES');
-        return route.enter(args);
-      }
+        console.warn('Não tenho certeza se esta instancia aplicada esta correta, efeutar devidos testes');
+        if (baseView instanceof Backbone.SubRoute) {
+          baseView.router = this;
+
+          console.warn('ESTA CLASSE DISPARA O ROUTE.ENTER QUE EU ESTAVA PROCURANDO QUE FAZ O CONSTROLE DO FETCH E DAS PROMISSES');
+          return baseView.enter(args);
+        }
+
+      });
     },
 
     triggerMethod: Marionette.triggerMethod

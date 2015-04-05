@@ -20,7 +20,13 @@ define(['frontend/modules/application/baseLayout'], function(Layout) {
     },
 
     onStart : function() {
-      alert('start');
+      Backbone.history.start();
+
+      if (App.User.isLogged() !== true) {
+        App.Router.navigate('#login', {trigger: true});
+      } else {
+        App.Router.navigate('#boards', {trigger: true});
+      }
     },
 
     onBeforeEnterRoute : function() {
@@ -34,6 +40,7 @@ define(['frontend/modules/application/baseLayout'], function(Layout) {
     },
 
     onEnterRoute : function() {
+      alert('onEnterRoute')
       // this.transitioning = false;
       // this.$body.scrollTop(0);
       // nprogress.done();

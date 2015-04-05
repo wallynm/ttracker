@@ -1,4 +1,4 @@
-require(['application', 'userModel', 'backbone', 'backbone.marionette', 'bootstrap', 'localstorage'], function(Application, UserModel) {
+require(['application', 'userModel', 'backbone', 'backbone.marionette', 'bootstrap', 'localstorage', 'backbone.require'], function(Application, UserModel) {
 
   window.App = new Application();
 
@@ -6,14 +6,19 @@ require(['application', 'userModel', 'backbone', 'backbone.marionette', 'bootstr
     routes : {
       '': 'login',
       'login': 'login',
-      'boards': 'boards',
-      'user': 'user',
-      'logout': 'userLogout',
+      'boards*': 'boards',
+      'lists*': 'lists',
+      'user*': 'user',
+      'logout*': 'userLogout',
+    },
+
+    login : function() {
+      alert('login')
     },
 
     boards : function() {
       require(['frontend/modules/boards/router'], function(Router) {
-        new Router({
+        new Router('boards', {
           container: App.mainRegion
         });
       });
@@ -21,7 +26,7 @@ require(['application', 'userModel', 'backbone', 'backbone.marionette', 'bootstr
 
     user : function() {
       require(['frontend/modules/user/router'], function(Router) {
-        new Router({
+        new Router('user', {
           container: App.mainRegion
         });
       });
