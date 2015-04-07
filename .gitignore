@@ -1,3 +1,6 @@
-/public/plugins/vendor/
+assets/public/plugins/vendor/
 .jshintrc
 .tern-project
+.tmp
+node_modules
+assets/build
