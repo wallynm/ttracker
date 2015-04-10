@@ -1,11 +1,9 @@
-define(['text!./header.html'],
-  function( tpl ) {
+define(['text!frontend/core/header/header.html'],
+  function(tpl) {
   return Backbone.Marionette.ItemView.extend({
     template : _.template(tpl),
-    
-    initialize : function()
-    {
-      var self = this;
+
+    initialize : function() {
       self.logged = App.User.get('logged');
     }
   });

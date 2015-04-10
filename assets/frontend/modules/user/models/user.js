@@ -1,4 +1,4 @@
-define(function () {
+define(function() {
   return Backbone.Model.extend({
     localStorage : new Backbone.LocalStorage('user'),
 
@@ -13,28 +13,26 @@ define(function () {
       email : null,
     },
 
-    initialize:function () {
+    initialize: function() {
       var self = this;
       var userData = self.localStorage.findAll();
 
-      if(userData.length !== 0){
+      if (userData.length !== 0) {
         self.id = userData[0].id;
-        self.fetch().done(function(){
+        self.fetch().done(function() {
           self.onFetch();
         });
       }
     },
 
-    onFetch : function()
-    {
+    onFetch : function() {
       var self = this;
-      if( this.isLogged() ){
+      if (self.isLogged()) {
         $('#login-content').addClass('hide');
       }
     },
 
-    isLogged : function()
-    {
+    isLogged : function() {
       return this.get('logged');
     }
   });

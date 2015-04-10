@@ -5891,11 +5891,19 @@ nav.navbar span.badge.new {
   background: rgba(255, 0, 0, 0.8);
   color: #fff;
 }
+.layout-panel {
+  margin: 10px;
+  margin-top: 60px;
+}
+.issue {
+  background: yellow;
+  margin-bottom: 10px;
+}
 .board-list {
   width: 300px;
   background: #FFF;
   border: solid 1px #ccc;
   padding: 10px;
   margin-right: 10px;
-  height: 600px;
+  min-height: 200px;
 }
