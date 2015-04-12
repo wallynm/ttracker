@@ -4,11 +4,11 @@ define(['frontend/core/common/layout'], function(Layout) {
     className: 'layout layout-panel',
 
     onBeforeFetch: function() {
-      alert('show loading panel');
+      // alert('show loading panel');
     },
 
     onFetch: function() {
-      alert('closes loading panel');
+      // alert('closes loading panel');
     }
   });
 });

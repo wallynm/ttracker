@@ -17,7 +17,7 @@ function(tpl, Panel, Board) {
     fetch : function() {
       var self = this;
       setTimeout(function() {
-        alert('fetch resolve');
+        // alert('fetch resolve');
         self.promisse.resolve();
       }, 500);
 

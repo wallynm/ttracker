@@ -17,7 +17,6 @@
   'use strict';
 
   Marionette.Application.prototype._initChannel = function () {
-    alert('Marionette.Application.prototype._initChannel');
     this.channelName = _.result(this, 'channelName') || 'global';
     this.channel = _.result(this, 'channel') || Radio.channel(this.channelName);
   }

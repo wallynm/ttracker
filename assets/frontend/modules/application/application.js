@@ -41,7 +41,7 @@ define(['frontend/modules/application/baseLayout', 'frontend/core/header/headerV
     },
 
     onEnterRoute : function() {
-      alert('onEnterRoute')
+      // alert('onEnterRoute')
       // this.transitioning = false;
       // this.$body.scrollTop(0);
       // nprogress.done();
