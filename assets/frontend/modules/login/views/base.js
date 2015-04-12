@@ -1,21 +1,18 @@
 define(['text!frontend/modules/login/templates/base.html'],
-  function( tpl ) {
-  return Backbone.Marionette.ItemView.extend({
+  function(tpl) {
+  return Marionette.ItemView.extend({
     template : _.template(tpl),
     className : 'login-form',
-    events :
-    {
+    events : {
       'click #btn-login' : 'checkCredentials'
     },
 
-    initialize : function()
-    {
+    initialize : function() {
       var self = this;
       self.logged = window.App.User.get('logged');
     },
 
-    checkCredentials : function()
-    {
+    checkCredentials : function() {
       window.App.User.set({
         logged : true,
         facebookID : 5732544234,
@@ -26,18 +23,14 @@ define(['text!frontend/modules/login/templates/base.html'],
         email : 'wally.nm@gmail.com',
       }).save();
 
-      window.App.Router.navigate('#boards', {trigger: true});
+      App.Router.navigate('#boards', {trigger: true});
     },
 
-    onRender : function ()
-    {
-      var self = this;
+    onRender : function() {
       $('#login-content').removeClass('hide');
 
     },
 
-    onShow : function ()
-    {
-    }
+    onShow : function() {}
   });
 });
