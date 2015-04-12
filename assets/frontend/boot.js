@@ -1,4 +1,4 @@
-require(['application', 'userModel', 'backbone', 'backbone.marionette', 'bootstrap', 'localstorage', '/socket.io/socket.io'], function(Application, UserModel) {
+require(['application', 'userModel', 'backbone', 'backbone.marionette', 'bootstrap', 'localstorage'], function(Application, UserModel) {
 
   window.App = new Application();
 
@@ -14,7 +14,7 @@ require(['application', 'userModel', 'backbone', 'backbone.marionette', 'bootstr
 
     login : function() {
       require(['frontend/modules/login/views/base'], function(View) {
-        App.layout.getRegion('content').show(View);
+        App.layout.getRegion('content').show(new View());
       });
     },
 

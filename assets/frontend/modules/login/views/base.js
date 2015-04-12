@@ -1,6 +1,6 @@
 define(['text!frontend/modules/login/templates/base.html'],
   function(tpl) {
-  return Backbone.Marionette.ItemView.extend({
+  return Marionette.ItemView.extend({
     template : _.template(tpl),
     className : 'login-form',
     events : {

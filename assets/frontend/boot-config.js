@@ -25,7 +25,6 @@ requirejs.config({
     'application': 'frontend/modules/application/application',
     'userModel': 'frontend/modules/user/models/user',
     'commonLayout' : 'frontend/modules/application/baseLayout',
-    'socket.io': 'socket.io/socket.io',
   },
 
   shim : {
