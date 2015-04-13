@@ -1,38 +1,22 @@
-define(['frontend/core/layouts/panel', 'frontend/modules/lists/views/listView'],
-function(PanelLayout, Lists) {
+define(['frontend/core/common/collectionView', 'frontend/modules/lists/views/listView', 'frontend/modules/lists/views/emptyView', 'frontend/modules/lists/models/lists'],
+function(CollectionView, EmptyView, Lists, ListsCollection) {
   //  return PanelLayout.extend({
-  return Marionette.CollectionView.extend({
+  return CollectionView.extend({
     ui: {
       boardList : '.board-list'
     },
 
-    collection: new Backbone.Collection([{
-      id  : 4,
-      name: 'Underscore',
-      value: '1.5.2',
-      description : 'teste'
-    }, {
-      id  : 3,
-      name: 'Backbone',
-      value: '1.1.0',
-      description : 'teste'
-    }, {
-      id  : 2,
-      name: 'Backbone.Marionette',
-      value: '1.5.1-bundled',
-      description : 'teste'
-    }, {
-      id  : 1,
-      name: 'Bootstrap',
-      value: '3.0.3',
-      description : 'teste'
-    }]),
-
+    collection: new ListsCollection(),
     childView: Lists,
+    emptyView: EmptyView,
+
+    fetch: function() {
+      return this.collection.fetch();
+    },
 
     onShow: function() {
-      $(this.ui.boardList).sortable({
-        group: this.ui.boardList,
+      $('.board-list .content').sortable({
+        group: '.board-list',
         animation: 150
       });
     },

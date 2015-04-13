@@ -14,15 +14,15 @@ function(tpl, Panel, Board) {
       panelContent: '@ui.panelContent',
     },
 
-    fetch : function() {
-      var self = this;
-      setTimeout(function() {
-        // alert('fetch resolve');
-        self.promisse.resolve();
-      }, 500);
-
-      return self.promisse;
-    },
+    // fetch : function() {
+    //   var self = this;
+    //   setTimeout(function() {
+    //     // alert('fetch resolve');
+    //     self.promisse.resolve();
+    //   }, 500);
+    //
+    //   return self.promisse;
+    // },
 
     onRender : function() {
       //this.ui.panelTitle.text('Teste');

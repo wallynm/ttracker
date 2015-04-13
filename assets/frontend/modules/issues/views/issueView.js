@@ -1,13 +1,14 @@
-define(['text!frontend/modules/issues/templates/issue.html', 'frontend/modules/issues/models/issue'],
-  function(tpl, Model) {
+define(['frontend/modules/issues/models/issue', 'text!frontend/modules/issues/templates/issue.html'],
+  function(Model, tpl) {
   return Marionette.ItemView.extend({
-    className : 'issue',
-    model: new Model(),
+    className: 'issue',
+    template: _.template(tpl),
+    model: Model,
+
     serializeData: function() {
       return {
         model : this.model.attributes,
       };
     },
-    template  : _.template(tpl),
   });
 });
