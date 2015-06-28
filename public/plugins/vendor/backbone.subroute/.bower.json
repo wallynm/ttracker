@@ -1,0 +1,29 @@
+{
+  "name": "backbone.subroute",
+  "version": "0.4.5",
+  "main": "dist/backbone.subroute.min.js",
+  "ignore": [
+    "spec",
+    ".gitignore",
+    ".jshintrc",
+    ".npmignore",
+    ".travis.yml",
+    "Gruntfile.js",
+    "LICENSE",
+    "beautify.json",
+    "package.json"
+  ],
+  "dependencies": {
+    "backbone": ">=1.0.0"
+  },
+  "homepage": "https://github.com/ModelN/backbone.subroute",
+  "_release": "0.4.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.4.5",
+    "commit": "34c17b13f32e217a5c2f895e4619686821695c49"
+  },
+  "_source": "git://github.com/ModelN/backbone.subroute.git",
+  "_target": "~0.4.5",
+  "_originalSource": "backbone.subroute"
+}

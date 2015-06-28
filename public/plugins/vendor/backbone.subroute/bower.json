@@ -1,0 +1,19 @@
+{
+  "name": "backbone.subroute",
+  "version": "0.4.5",
+  "main": "dist/backbone.subroute.min.js",
+  "ignore": [
+    "spec",
+    ".gitignore",
+    ".jshintrc",
+    ".npmignore",
+    ".travis.yml",
+    "Gruntfile.js",
+    "LICENSE",
+    "beautify.json",
+    "package.json"
+  ],
+  "dependencies": {
+    "backbone": ">=1.0.0"
+  }
+}
