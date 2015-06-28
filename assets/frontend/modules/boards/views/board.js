@@ -11,6 +11,13 @@ function(CollectionView, EmptyView, Lists, ListsCollection) {
     emptyView: EmptyView,
 
     fetch: function() {
+
+      if (window.system) {
+        console.warn('aff');
+      }
+
+      this.fetch()
+
       return this.collection.fetch();
     },
 

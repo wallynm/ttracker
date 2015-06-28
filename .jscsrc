@@ -3,7 +3,7 @@
   "fileExtensions": [ ".js", "jscs" ],
 
   "requireParenthesesAroundIIFE": true,
-  "maximumLineLength": 200,
+  "maximumLineLength": 500,
   "validateLineBreaks": "LF",
 
   "safeContextKeyword": "self",

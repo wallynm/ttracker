@@ -15,11 +15,13 @@ requirejs.config({
     'backbone.wreqr': 'public/plugins/vendor/backbone.wreqr/src/build/backbone.wreqr',
     'backbone.subroute': 'public/plugins/vendor/backbone.subroute/backbone.subroute',
     'underscore': 'public/plugins/vendor/underscore/underscore',
+    'helper': 'public/custom/helpers/dist/helper',
 
     'backbone.stick': 'public/plugins/vendor/backbone.stickit/backbone.stickit',
     'text': 'public/plugins/vendor/text/text',
     'localstorage': 'public/plugins/vendor/backbone.localStorage/backbone.localStorage',
     'bootstrap': 'public/plugins/vendor/bootstrap/dist/js/bootstrap',
+    'bootstrap-dialog': 'public/plugins/vendor/bootstrap-dialog/dist/js/bootstrap-dialog',
     'Sortable': 'public/plugins/vendor/Sortable/jquery.fn.sortable',
 
     'application': 'frontend/modules/application/application',
@@ -28,9 +30,14 @@ requirejs.config({
   },
 
   shim : {
-    bootstrap: {
+    'bootstrap': {
       deps: ['jquery'],
       exports: 'bootstrap'
+    },
+
+    'bootstrap-dialog': {
+      deps: ['bootstrap'],
+      exports: 'BootstrapDialog'
     },
 
     'backbone' :{

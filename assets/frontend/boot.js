@@ -1,4 +1,8 @@
-require(['application', 'userModel', 'backbone', 'backbone.marionette', 'bootstrap', 'localstorage'], function(Application, UserModel) {
+function popupCallback(a, b, c) {
+  console.warn(a, b, c);
+}
+
+require(['application', 'userModel', 'backbone', 'backbone.marionette', 'bootstrap', 'bootstrap-dialog', 'localstorage', 'helper'], function(Application, UserModel) {
 
   window.App = new Application();
 
@@ -23,7 +27,7 @@ require(['application', 'userModel', 'backbone', 'backbone.marionette', 'bootstr
         new Router('boards', {
           container: App.layout.getRegion('content')
         });
-      });
+      })
     },
 
     user : function() {

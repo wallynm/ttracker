@@ -4,7 +4,8 @@ define(['text!frontend/modules/login/templates/base.html'],
     template : _.template(tpl),
     className : 'login-form',
     events : {
-      'click #btn-login' : 'checkCredentials'
+      //'click #btn-login' : 'checkCredentials',
+      'click .github-passport' : 'checkCredentials',
     },
 
     initialize : function() {
@@ -13,6 +14,10 @@ define(['text!frontend/modules/login/templates/base.html'],
     },
 
     checkCredentials : function() {
+      popupWindow('/auth/github', 'Login', 900, 700);
+    },
+
+    checkCredentialss : function() {
       window.App.User.set({
         logged : true,
         facebookID : 5732544234,
