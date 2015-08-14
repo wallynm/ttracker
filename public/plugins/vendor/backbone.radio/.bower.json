@@ -1,6 +1,6 @@
 {
   "name": "backbone.radio",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "homepage": "https://github.com/marionettejs/backbone.radio",
   "authors": [
     "Jmeas <jellyes2@gmail.com>"
@@ -27,14 +27,14 @@
     "tests"
   ],
   "dependencies": {
-    "backbone": "1.0.0 - 1.1.2",
-    "underscore": "1.4.4 - 1.7.0"
+    "backbone": "1.0.0 - 1.2.1",
+    "underscore": "1.4.4 - 1.8.3"
   },
-  "_release": "0.9.0",
+  "_release": "0.9.1",
   "_resolution": {
     "type": "version",
-    "tag": "v0.9.0",
-    "commit": "ff88c348a0f549ca307b9f0c398252d50dd1f3c0"
+    "tag": "v0.9.1",
+    "commit": "f3d6e631e184501e7335bdd4374cad8bb27302b2"
   },
   "_source": "git://github.com/marionettejs/backbone.radio.git",
   "_target": "~0.9.0",

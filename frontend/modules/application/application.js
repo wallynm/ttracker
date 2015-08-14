@@ -20,14 +20,15 @@ define(['frontend/modules/application/baseLayout', 'frontend/core/header/headerV
 
     onStart : function() {
       Backbone.history.start();
-
-      if (App.User.isLogged() !== true) {
-        App.Router.navigate('#login', {trigger: true});
-      } else {
-
-        App.layout.header.show(new Header());
-        App.Router.navigate('#boards', {trigger: true});
-      }
+      App.User.checkSession()
+      .done(function(){
+        if (App.User.isLogged()) {
+          App.layout.header.show(new Header());
+          App.Router.navigate('#boards', {trigger: true});
+        } else {
+          App.Router.navigate('#login', {trigger: true});
+        }
+      });
     },
 
     onBeforeEnterRoute : function() {

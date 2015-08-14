@@ -1,3 +1,25 @@
+### v2.4.2 [view commit logs](https://github.com/marionettejs/backbone.marionette/compare/v2.4.1...v2.4.2)
+
+#### Fixes
+
+* Fixed a bug where `reorderOnSort` would not reorder back to the original order.
+* Stop deleting `$childViewContainer` so that it can be accessed in behaviors.
+* Ensure `before:show` and `show` events are triggered on `CollectionView` children.
+* Ensure `onBeforeAttach` and `onAttach` are called for `CollectionView` children.
+* Allow for disabling of `triggerBeforeAttach` and `triggerAttach` via `show()` options.
+* Added the documented `buffer` argument to `attachBuffer` and changed implementation so this was used rather than `_createBuffer`.
+* Fixed potential memory leak when destroying children on `CollectionView` by making the `checkEmpty` call optional.
+
+#### Docs
+
+* Improve documentation around the requirement for an initial render to bind events in `CollectionView`.
+* Add documentation around UI interpolation usage.
+* Add documentation to warn about the full re-render of a `CollectionView` or `CompositeView` if `reorderOnSort` is not set.
+
+#### Misc
+
+* Bumped Underscore and Backbone dependencies to 1.8.3 and 1.2.1 respectively.
+
 ### v2.4.1 [view commit logs](https://github.com/marionettejs/backbone.marionette/compare/v2.4.0...v2.4.1)
 
 #### Fixes
@@ -52,10 +74,9 @@ As always come and join us in [chat](https://gitter.im/marionettejs/backbone.mar
 
 * ItemViews
   * the `isRendered` property is now set to `true` after render, even if no template is set.
-  * Views
   * The `destroy` method now returns this instance that was destroyed to enable easier chaining of view actions.
   * If you define the options hash on your `Marionette.View` or if you pass options as a function to your `Marionette.View`, pass the result of options down to the backbone view constructor.
-  * All views now have a `isRendered` property, that is updated after `render` and `destroy`.
+  * All views now have an `isRendered` property, that is updated after `render` and `destroy`.
 
 * Object
   * The `destroy` method now returns this instance that was destroyed to enable easier chaining of object actions.
@@ -392,7 +413,7 @@ new Marionette.RegionManager({
   * Features
     * Add `onRoute` to the `appRouter`.
     ```js
-      Backbone.Marionette.AppRouter.extend({
+      Marionette.AppRouter.extend({
         onRoute: function(route, params) {
         }
       })

@@ -2,6 +2,13 @@ LASTEST NOT RELEASED
 ------------------------------
 NONE
 
+V1.34.5
+------------------------------
+* Merged #137, Add missing less and remove stray css file in src folder *
+* Tabindex is a customizable option now. *
+* Refs #142 *
+* Refs #145 *
+
 V1.34.4
 ------------------------------
 * Updated required Bootstrap version. *

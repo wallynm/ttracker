@@ -17,12 +17,12 @@
 
     // CommonJS module is defined
     if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('jquery')(root));
+        module.exports = factory(require('jquery'), require('bootstrap'));
     }
     // AMD module is defined
     else if (typeof define === "function" && define.amd) {
-        define(["jquery"], function($) {
-          return root.BootstrapDialog = factory($);
+        define("bootstrap-dialog", ["jquery"], function($) {
+            return factory($);
         });
     } else {
         // planted over the root!
@@ -100,7 +100,7 @@
     BootstrapDialogModal.METHODS_TO_OVERRIDE['v3.3'] = {
         /**
          * Overrided.
-         *
+         * 
          * @returns {undefined}
          */
         setScrollbar: function() {
@@ -111,7 +111,7 @@
         },
         /**
          * Overrided.
-         *
+         * 
          * @returns {undefined}
          */
         resetScrollbar: function() {
@@ -122,7 +122,7 @@
         },
         /**
          * Overrided.
-         *
+         * 
          * @returns {undefined}
          */
         hideModal: function() {
@@ -143,7 +143,7 @@
         constructor: BootstrapDialogModal,
         /**
          * New function, to get the dialogs that opened by BootstrapDialog.
-         *
+         * 
          * @returns {undefined}
          */
         getGlobalOpenedDialogs: function() {
@@ -236,7 +236,8 @@
         autodestroy: true,
         draggable: false,
         animate: true,
-        description: ''
+        description: '',
+        tabindex: -1
     };
 
     /**
@@ -285,7 +286,7 @@
         },
         /**
          * To make multiple opened dialogs look better.
-         *
+         * 
          * Will be removed in later version, after Bootstrap Modal >= 3.3.0, updating z-index is unnecessary.
          */
         updateZIndex: function() {
@@ -347,8 +348,9 @@
             return this;
         },
         createModal: function() {
-            var $modal = $('<div class="modal" tabindex="-1" role="dialog" aria-hidden="true"></div>');
-            $modal.prop('id', this.getId()).attr('aria-labelledby', this.getId() + '_title');
+            var $modal = $('<div class="modal" role="dialog" aria-hidden="true"></div>');
+            $modal.prop('id', this.getId());
+            $modal.attr('aria-labelledby', this.getId() + '_title');
 
             return $modal;
         },
@@ -684,6 +686,21 @@
         },
         setDescription: function(description) {
             this.options.description = description;
+
+            return this;
+        },
+        setTabindex: function(tabindex) {
+            this.options.tabindex = tabindex;
+
+            return this;
+        },
+        getTabindex: function() {
+            return this.options.tabindex;
+        },
+        updateTabindex: function() {
+            if (this.isRealized()) {
+                this.getModal().attr('tabindex', this.getTabindex());
+            }
 
             return this;
         },
@@ -1079,6 +1096,7 @@
             this.updateClosable();
             this.updateAnimate();
             this.updateSize();
+            this.updateTabindex();
 
             return this;
         },

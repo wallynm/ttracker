@@ -1,4 +1,4 @@
-<h1 align="center">Backbone.Marionette</h1>
+<h1 align="center">Marionette.js</h1>
 <p align="center">
   <img title="backbone marionette" src='https://cdn.mediacru.sh/6sNqngKFuqft.svg' />
 </p>
@@ -17,7 +17,7 @@
 
 ## About Marionette
 
-Backbone.Marionette is a composite application library for Backbone.js that
+Marionette is a composite application library for Backbone.js that
 aims to simplify the construction of large scale JavaScript applications.
 It is a collection of common design and implementation patterns found in
 applications.

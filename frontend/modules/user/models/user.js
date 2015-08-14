@@ -1,35 +1,26 @@
 define(function() {
   return Backbone.Model.extend({
-    localStorage : new Backbone.LocalStorage('user'),
-
     defaults:{
-      id : null,
-      logged : null,
-      facebookID : null,
-      firstName : null,
-      lastName :null,
-      college : null,
-      state: null,
-      email : null,
+      _id: null,
+      logged: null,
+      user: null,
+      email: null,
+      pass: null
     },
 
-    initialize: function() {
+    login : function() {
       var self = this;
-      var userData = self.localStorage.findAll();
-
-      if (userData.length !== 0) {
-        self.id = userData[0].id;
-        self.fetch().done(function() {
-          self.onFetch();
-        });
-      }
+      return $.post('/api/users/login', this.toJSON(), function(data){
+        data.logged = true;
+        self.set(data);
+      });
     },
 
-    onFetch : function() {
+    checkSession : function() {
       var self = this;
-      if (self.isLogged()) {
-        $('#login-content').addClass('hide');
-      }
+      return $.get('/api/users/session', function(data){
+        self.set(data);
+      });
     },
 
     isLogged : function() {

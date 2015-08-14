@@ -1,4 +1,4 @@
-// backbone-subroute 0.4.5
+// backbone-subroute 0.4.6
 //
 // Copyright (C) 2012 Dave Cadwallader, Model N, Inc.
 // Distributed under the MIT License
@@ -43,7 +43,7 @@
             // grab the full URL
             var hash;
             if (Backbone.history.fragment) {
-                hash = Backbone.history.getFragment();
+                hash = Backbone.history.getFragment(Backbone.history.fragment);
             } else {
                 hash = Backbone.history.getHash();
             }

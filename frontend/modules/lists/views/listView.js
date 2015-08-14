@@ -38,7 +38,6 @@ function(CompositeView, IssuesCollection, IssuesView, EmptyView, tpl) {
         group: '.board-list',
         animation: 150
       });
-      alert('aff')
     },
 
     fetch: function() {
