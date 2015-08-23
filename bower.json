@@ -27,7 +27,10 @@
     "backbone.stickit": "~0.9.0",
     "less": "~2.4.0",
     "backbone.localStorage": "~1.1.16",
-    "Sortable": "~1.1.1"
+    "Sortable": "~1.1.1",
+    "backbone.radio": "~0.9.0",
+    "backbone.subroute": "~0.4.5",
+    "bootstrap-dialog": "~1.34.4"
   },
   "resolutions": {
     "underscore": "1.6.0"

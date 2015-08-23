@@ -1,40 +1,46 @@
-define(function () {
+define(function() {
   return Backbone.Model.extend({
-    localStorage : new Backbone.LocalStorage('user'),
-
     defaults:{
-      id : null,
-      logged : null,
-      facebookID : null,
-      firstName : null,
-      lastName :null,
-      college : null,
-      state: null,
-      email : null,
+      _id: null,
+      logged: null,
+      user: null,
+      email: null,
+      pass: null
     },
 
-    initialize:function () {
+    login: function() {
       var self = this;
-      var userData = self.localStorage.findAll();
+      return $.post('/api/users/login', this.toJSON(), function(data){
+        data.logged = true;
+        self.set(data);
 
-      if(userData.length !== 0){
-        self.id = userData[0].id;
-        self.fetch().done(function(){
-          self.onFetch();
-        });
-      }
+        App.layout.showHeader();
+        App.Router.navigate('#boards', {trigger: true});
+      });
     },
 
-    onFetch : function()
-    {
+    logout: function() {
       var self = this;
-      if( this.isLogged() ){
-        $('#login-content').addClass('hide');
-      }
+      return $.post('/api/users/logout');
     },
 
-    isLogged : function()
-    {
+    register: function(){
+      var self = this;
+      console.log(this.toJSON());
+      return $.post('/api/users/register', this.toJSON(), function(data){
+        data.logged = true;
+        self.set(data);
+      });
+    },
+
+    checkSession: function() {
+      var self = this;
+      return $.get('/api/users/session', function(data){
+        self.set(data);
+      });
+    },
+
+    isLogged: function() {
       return this.get('logged');
     }
   });

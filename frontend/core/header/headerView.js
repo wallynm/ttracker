@@ -1,12 +1,19 @@
-define(['text!./header.html'],
-  function( tpl ) {
+define(['text!frontend/core/header/header.html'],
+  function(tpl) {
   return Backbone.Marionette.ItemView.extend({
     template : _.template(tpl),
-    
-    initialize : function()
-    {
-      var self = this;
-      self.logged = App.User.get('logged');
+
+    events: {
+      'click @ui.logoutButton': 'logout'
+    },
+
+    ui: {
+      logoutButton: '#btn-logout',
+    },
+
+    logout: function() {
+      App.layout.showHeader();
+      App.Router.navigate('#', {trigger: true});
     }
   });
 });

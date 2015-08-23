@@ -1,0 +1,41 @@
+{
+  "name": "ttracker",
+  "version": "1.0.0",
+  "description": "[A demo of the project](http://ttracker.io)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wallynm/ttracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wallynm/ttracker/issues"
+  },
+  "homepage": "https://github.com/wallynm/ttracker",
+  "dependencies": {
+    "co-body": "^2.0.0",
+    "co-monk": "^1.0.0",
+    "co-views": "^1.0.0",
+    "generic-session": "^0.1.0",
+    "gulp": "^3.9.0",
+    "gulp-less": "^3.0.3",
+    "gulp-util": "^3.0.6",
+    "koa": "^0.21.0",
+    "koa-generic-session": "^1.9.0",
+    "koa-generic-session-mongo": "^0.2.2",
+    "koa-jsonp": "^0.1.2",
+    "koa-logger": "^1.2.2",
+    "koa-passport": "^1.1.6",
+    "koa-route": "^2.4.2",
+    "koa-router": "^5.1.2",
+    "koa-static": "^1.4.9",
+    "monk": "^1.0.1",
+    "passport-github": "^0.1.5",
+    "swig": "^1.4.2",
+    "underscore": "^1.8.3"
+  }
+}
