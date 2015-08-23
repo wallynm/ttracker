@@ -1,4 +1,5 @@
 {
+  "start": "node --harmony app.js",
   "name": "ttracker",
   "version": "1.0.0",
   "description": "[A demo of the project](http://ttracker.io)",
