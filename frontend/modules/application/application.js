@@ -1,12 +1,9 @@
-define(['frontend/modules/application/baseLayout', 'frontend/core/header/headerView'], function(Layout, Header) {
+define(['frontend/modules/application/baseLayout'], function(Layout) {
 
   window.routerChannel = Backbone.Radio.channel('router');
 
   return Marionette.Application.extend({
     initialize : function() {
-      this.layout = new Layout();
-      this.layout.render();
-
       this.name = 'ttracker';
       this.language = 'pt-BR';
       this.baseUrl = (location.hostname === 'localhost') ? 'http://localhost/ttracker/' : '';
@@ -19,11 +16,16 @@ define(['frontend/modules/application/baseLayout', 'frontend/core/header/headerV
     },
 
     onStart : function() {
-      Backbone.history.start();
+      var self = this;
+
+      // Only starts the app once the session has already checkedfd
       App.User.checkSession()
       .done(function(){
+        Backbone.history.start();
+        self.layout = new Layout();
+        self.layout.render();
+
         if (App.User.isLogged()) {
-          App.layout.header.show(new Header());
           App.Router.navigate('#boards', {trigger: true});
         } else {
           App.Router.navigate('#login', {trigger: true});

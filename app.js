@@ -64,7 +64,7 @@ app.use(function *(next) {
 
 app.use(function *(){
   var err = new Error();
-  err.status = 404;
+  this.status = 404;
   this.body  = yield render('404.html', { errors: err});
 });
 

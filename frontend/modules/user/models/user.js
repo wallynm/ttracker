@@ -8,22 +8,39 @@ define(function() {
       pass: null
     },
 
-    login : function() {
+    login: function() {
       var self = this;
       return $.post('/api/users/login', this.toJSON(), function(data){
+        data.logged = true;
+        self.set(data);
+
+        App.layout.showHeader();
+        App.Router.navigate('#boards', {trigger: true});
+      });
+    },
+
+    logout: function() {
+      var self = this;
+      return $.post('/api/users/logout');
+    },
+
+    register: function(){
+      var self = this;
+      console.log(this.toJSON());
+      return $.post('/api/users/register', this.toJSON(), function(data){
         data.logged = true;
         self.set(data);
       });
     },
 
-    checkSession : function() {
+    checkSession: function() {
       var self = this;
       return $.get('/api/users/session', function(data){
         self.set(data);
       });
     },
 
-    isLogged : function() {
+    isLogged: function() {
       return this.get('logged');
     }
   });

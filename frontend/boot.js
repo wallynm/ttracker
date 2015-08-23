@@ -2,7 +2,7 @@ require(['application', 'userModel', 'backbone', 'backbone.marionette', 'bootstr
   window.App = new Application();
 
   var MainRouter = Backbone.Router.extend({
-    routes : {
+    routes: {
       '': 'login',
       'login': 'login',
       'boards*': 'boards',
@@ -11,21 +11,21 @@ require(['application', 'userModel', 'backbone', 'backbone.marionette', 'bootstr
       'logout*': 'userLogout',
     },
 
-    login : function() {
+    login: function() {
       require(['frontend/modules/login/views/base'], function(View) {
         App.layout.getRegion('content').show(new View());
       });
     },
 
-    boards : function() {
+    boards: function() {
       require(['frontend/modules/boards/router'], function(Router) {
         new Router('boards', {
           container: App.layout.getRegion('content')
         });
-      })
+      });
     },
 
-    user : function() {
+    user: function() {
       require(['frontend/modules/user/router'], function(Router) {
         new Router('user', {
           container: App.layout.getRegion('content')

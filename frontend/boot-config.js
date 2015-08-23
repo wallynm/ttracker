@@ -4,7 +4,7 @@ requirejs.config({
   waitSeconds: 0,
   baseUrl: './',
 
-  paths : {
+  paths: {
     //CORE INCLUDES
     'jquery': 'public/plugins/vendor/jquery/dist/jquery.min',
     'backbone': 'public/plugins/vendor/backbone/backbone',
@@ -22,14 +22,14 @@ requirejs.config({
     'localstorage': 'public/plugins/vendor/backbone.localStorage/backbone.localStorage',
     'bootstrap': 'public/plugins/vendor/bootstrap/dist/js/bootstrap',
     'bootstrap-dialog': 'public/plugins/vendor/bootstrap-dialog/dist/js/bootstrap-dialog',
-    'Sortable': 'public/plugins/vendor/Sortable/jquery.fn.sortable',
+    'Sortable': 'public/plugins/jquery.fn.sortable',
 
     'application': 'frontend/modules/application/application',
     'userModel': 'frontend/modules/user/models/user',
-    'commonLayout' : 'frontend/modules/application/baseLayout',
+    'commonLayout': 'frontend/modules/application/baseLayout'
   },
 
-  shim : {
+  shim: {
     'bootstrap': {
       deps: ['jquery'],
       exports: 'bootstrap'
@@ -40,8 +40,8 @@ requirejs.config({
       exports: 'BootstrapDialog'
     },
 
-    'backbone' :{
-      exports : 'Backbone',
+    'backbone': {
+      exports: 'Backbone',
       deps: ['underscore', 'jquery']
     },
 
@@ -58,7 +58,7 @@ requirejs.config({
     },
 
     'text': {
-      deps:['underscore']
+      deps: ['underscore']
     },
 
     'backbone.marionette': {

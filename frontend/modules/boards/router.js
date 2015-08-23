@@ -1,7 +1,7 @@
-define(['frontend/core/common/router', 'frontend/modules/boards/views/boardLayout'], function(Router, BoardLayou) {
+define(['frontend/core/common/router', 'frontend/modules/boards/views/boardLayout'], function(Router, BoardLayout) {
   return Router.extend({
 
-    initialize : function(options) {
+    initialize: function(options) {
       this.container = options.container;
     },
 
@@ -13,7 +13,7 @@ define(['frontend/core/common/router', 'frontend/modules/boards/views/boardLayou
     },
 
     index: function() {
-      this.container.show(new BoardLayou());
+      this.container.show(new BoardLayout());
     },
 
     show: function() {
