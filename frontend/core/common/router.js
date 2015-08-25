@@ -4,21 +4,23 @@ define(['backbone.radio', 'backbone.subroute'], function() {
     createTrailingSlashRoutes: true,
     promisse: $.Deferred(),
 
-    constructor : function() {
+    constructor: function() {
       this.channel = Backbone.Radio.channel('router');
       this.on('all', this._onRouterEvent);
       this.listenTo(Backbone.history, 'route', this._onHistoryRoute);
       Backbone.SubRoute.apply(this, arguments);
     },
 
-    _onRouterEvent : function() {
+    _onRouterEvent: function(router) {
+
       var args = arguments;
       var eventName = args[0];
+      console.warn('Event _onRouterEvent ---> ', eventName, this, args);
 
       this.channel.trigger(eventName, this, args);
     },
 
-    _onHistoryRoute : function(router) {
+    _onHistoryRoute: function(router) {
       console.warn('Event _onHistoryRoute ---> ' + router);
 
       if (this === router) {
@@ -28,30 +30,31 @@ define(['backbone.radio', 'backbone.subroute'], function() {
       }
     },
 
-    resolve : function(object) {
+    resolve: function(object) {
       this.promisse.resolve(object);
     },
 
-    execute : function(callback, args) {
+    execute: function(callback, args) {
       var self = this;
-      if (!this.active) {
-        this.triggerMethod('before:enter', args);
-      }
-      self.triggerMethod('before:route', args);
+      // if (!self.active) {
+      //   self.triggerMethod('before:enter:route', args);
+      // }
+      self.triggerMethod('before:enter', args);
 
-      $.when(this._execute(callback, args)).then(function() {
+      $.when(self._execute(callback, args)).then(function() {
         if (!self.active) {
-          self.triggerMethod('enter', args);
+          self.triggerMethod('enter:route', args);
         }
-        self.triggerMethod('route', args);
+        self.triggerMethod('enter:route', args);
       });
     },
 
-    _execute : function(callback, args) {
+    _execute: function(callback, args) {
       var self = this;
       callback.apply(this, args);
 
       this.promisse.done(function(baseView) {
+        alert('PROMISSE DONE!')
         baseView.router = self;
         return baseView.enter(args);
       });

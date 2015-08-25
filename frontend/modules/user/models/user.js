@@ -13,9 +13,6 @@ define(function() {
       return $.post('/api/users/login', this.toJSON(), function(data){
         data.logged = true;
         self.set(data);
-
-        App.layout.showHeader();
-        App.Router.navigate('#boards', {trigger: true});
       });
     },
 

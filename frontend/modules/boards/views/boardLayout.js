@@ -7,25 +7,30 @@ function(tpl, Panel, Board) {
     ui : {
       panelContent : '.body',
       panelTitle : '.header .title',
-      issues : '.issue'
+      tasks : '.task'
     },
 
     regions: {
       panelContent: '@ui.panelContent',
     },
 
-    // fetch : function() {
-    //   var self = this;
-    //   setTimeout(function() {
-    //     // alert('fetch resolve');
-    //     self.promisse.resolve();
-    //   }, 500);
-    //
-    //   return self.promisse;
-    // },
+    /**
+     * O fetch e de extrema importancia, uma vez que ele barra o metodo de render do mesmo
+     * @return {[type]} [description]
+     */
+    fetch : function() {
+      var self = this;
+      setTimeout(function() {
+        // alert('fetch resolve');
+        self.promisse.resolve();
+      }, 500);
+
+      return self.promisse;
+    },
 
     onRender : function() {
       //this.ui.panelTitle.text('Teste');
+      alert('aaaaa')
       this.panelContent.show(new Board());
     }
   });

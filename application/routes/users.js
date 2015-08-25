@@ -40,9 +40,9 @@ module.exports = function(app, route) {
     this.body = body;
   }));
 
-  app.use(route.get('/api/users/logout', function *() {
-    if (this.method !== 'GET') return yield next;
-    var body = {'session': undefined};
+  app.use(route.post('/api/users/logout', function *() {
+    if (this.method !== 'POST') return yield next;
+    var body = {'session': ''};
 
     if (!_.isUndefined(this.session.data)) {
       this.session.data = undefined;
