@@ -2,9 +2,9 @@
   "name": "ttracker",
   "version": "1.0.0",
   "description": "[A demo of the project](http://ttracker.io)",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node --harmony app.js",
+    "start": "node --harmony app prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
