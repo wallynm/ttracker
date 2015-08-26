@@ -1,7 +1,7 @@
-define(['text!frontend/modules/issues/templates/empty.html'],
+define(['text!frontend/modules/tasks/templates/empty.html'],
   function(tpl, Model) {
   return Marionette.ItemView.extend({
-    className : 'issue empty-issue',
+    className : 'task empty-task',
     template  : _.template(tpl),
   });
 });

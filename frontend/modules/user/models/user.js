@@ -13,14 +13,12 @@ define(function() {
       return $.post('/api/users/login', this.toJSON(), function(data){
         data.logged = true;
         self.set(data);
-
-        App.layout.showHeader();
-        App.Router.navigate('#boards', {trigger: true});
       });
     },
 
     logout: function() {
       var self = this;
+      self.set(self.defaults);
       return $.post('/api/users/logout');
     },
 

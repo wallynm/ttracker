@@ -39,9 +39,9 @@ define(['text!frontend/modules/login/templates/base.html'],
 
       if (this.validateLogin()) {
         App.User.login()
-        .done(function(data) {
+        .done(function() {
           if (App.User.get('logged')) {
-
+            App.Router.navigate('#boards', {trigger: true});
           }
         });
       }

@@ -3,7 +3,7 @@ define(function() {
     defaults:{
       id: null,
       title: null,
-      issues: null,
+      tasks: null,
       duedate: null
     }
   });

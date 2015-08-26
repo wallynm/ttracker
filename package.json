@@ -2,8 +2,9 @@
   "name": "ttracker",
   "version": "1.0.0",
   "description": "[A demo of the project](http://ttracker.io)",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "node --harmony app prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -37,5 +38,8 @@
     "passport-github": "^0.1.5",
     "swig": "^1.4.2",
     "underscore": "^1.8.3"
+  },
+  "engines": {
+    "node": "0.11.16"
   }
 }

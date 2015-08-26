@@ -1,23 +1,23 @@
-define(['frontend/core/common/compositeView', 'frontend/modules/issues/models/issues', 'frontend/modules/issues/views/issueView', 'frontend/modules/issues/views/emptyView', 'text!frontend/modules/lists/templates/list.html'],
-function(CompositeView, IssuesCollection, IssuesView, EmptyView, tpl) {
+define(['frontend/core/common/compositeView', 'frontend/modules/tasks/models/tasks', 'frontend/modules/tasks/views/taskView', 'frontend/modules/tasks/views/emptyView', 'text!frontend/modules/lists/templates/list.html'],
+function(CompositeView, tasksCollection, tasksView, EmptyView, tpl) {
 
   return CompositeView.extend({
     className: 'board-list pull-left',
     template: _.template(tpl),
-    collection: new IssuesCollection(),
-    childView: IssuesView,
+    collection: new tasksCollection(),
+    childView: tasksView,
     emptyView: EmptyView,
     childViewContainer: '.content',
 
     ui: {
-      addIssue : '.footer'
+      addtask : '.footer'
     },
 
     events: {
-      'click @ui.addIssue' : 'addIssue'
+      'click @ui.addtask' : 'addtask'
     },
 
-    addIssue: function() {
+    addtask: function() {
       this.collection.add({
         id: chance.hash({length: 10}),
         title: chance.sentence({words: chance.natural({min: 1, max: 5}) }),

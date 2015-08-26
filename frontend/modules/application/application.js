@@ -1,26 +1,25 @@
 define(['frontend/modules/application/baseLayout'], function(Layout) {
-
   window.routerChannel = Backbone.Radio.channel('router');
 
   return Marionette.Application.extend({
-    initialize : function() {
+    initialize: function() {
       this.name = 'ttracker';
       this.language = 'pt-BR';
       this.baseUrl = (location.hostname === 'localhost') ? 'http://localhost/ttracker/' : '';
 
       this.listenTo(window.routerChannel, {
-        'before:enter:route' : this.onBeforeEnterRoute,
-        'enter:route'        : this.onEnterRoute,
-        'error:route'        : this.onErrorRoute
+        'before:enter': this.onBeforeEnterRoute,
+        'enter:route': this.onEnterRoute,
+        'error:route': this.onErrorRoute
       });
     },
 
-    onStart : function() {
+    onStart: function() {
       var self = this;
 
       // Only starts the app once the session has already checkedfd
       App.User.checkSession()
-      .done(function(){
+      .done(function() {
         Backbone.history.start();
         self.layout = new Layout();
         self.layout.render();
@@ -33,18 +32,18 @@ define(['frontend/modules/application/baseLayout'], function(Layout) {
       });
     },
 
-    onBeforeEnterRoute : function() {
-      // this.transitioning = true;
-      // // Don't show for synchronous route changes
-      // _.defer(() => {
-      //   if (this.transitioning) {
-      //     nprogress.start();
-      //   }
-      // });
+    onBeforeEnterRoute: function() {
+      var defer = $.Deferred();
+
+      setTimeout(function() {
+        defer.resolve('hurray');
+      }, 2000);
+
+      return defer;
     },
 
-    onEnterRoute : function() {
-      // alert('onEnterRoute')
+    onEnterRoute: function() {
+      console.warn('onEnterRoute');
       // this.transitioning = false;
       // this.$body.scrollTop(0);
       // nprogress.done();

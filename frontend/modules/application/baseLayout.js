@@ -5,13 +5,13 @@ define(['text!frontend/modules/application/template.html', 'frontend/core/common
     template: _.template(tpl),
 
     initialize: function() {
-      if (!_.isNull(App.User.get('logged'))){
-        this.showHeader();
-      }
-    },
+      var self = this;
+      self.getRegion('header').show(new Header());
+      self.content.on('swap', function() {
+        App.layout.getRegion('header').currentView.updateDisplay();
 
-    showHeader: function() {
-      this.getRegion('header').show(new Header());
+        // self.getRegion('header').currentView.changeDisplay();
+      });
     },
 
     regions: {

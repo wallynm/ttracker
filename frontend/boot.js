@@ -5,16 +5,9 @@ require(['application', 'userModel', 'backbone', 'backbone.marionette', 'bootstr
     routes: {
       '': 'login',
       'login': 'login',
+      'logout': 'logout',
       'boards*': 'boards',
-      'lists*': 'lists',
-      'user*': 'user',
-      'logout*': 'userLogout',
-    },
-
-    login: function() {
-      require(['frontend/modules/login/views/base'], function(View) {
-        App.layout.getRegion('content').show(new View());
-      });
+      'lists*': 'lists'
     },
 
     boards: function() {
@@ -23,21 +16,26 @@ require(['application', 'userModel', 'backbone', 'backbone.marionette', 'bootstr
           container: App.layout.getRegion('content')
         });
       });
+
+      // console.warn(this.promisse)
     },
 
-    user: function() {
-      require(['frontend/modules/user/router'], function(Router) {
-        new Router('user', {
-          container: App.layout.getRegion('content')
-        });
+    login: function() {
+      require(['frontend/modules/login/views/base'], function(View) {
+        App.layout.getRegion('content').show(new View());
       });
     },
 
-    userLogout: function() {
-      App.User.destroy();
-      App.Router.navigate('#', {trigger: true});
+    logout: function() {
+      App.User.logout()
+      .done(function() {
+        App.Router.navigate('#login', {trigger: true});
+      });
     }
   });
+
+
+
 
   // Configures the user base model
   App.User = new UserModel();

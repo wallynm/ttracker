@@ -1,7 +1,7 @@
-define(['frontend/modules/issues/models/issue', 'text!frontend/modules/issues/templates/issue.html'],
+define(['frontend/modules/tasks/models/task', 'text!frontend/modules/tasks/templates/task.html'],
   function(Model, tpl) {
   return Marionette.ItemView.extend({
-    className: 'issue',
+    className: 'task',
     template: _.template(tpl),
     model: Model,
 
