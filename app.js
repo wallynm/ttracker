@@ -34,8 +34,8 @@ app.use(serve('.'));
 app.keys = ['ttracker'];
 app.use(session({
   store: new MongoStore({
-    url: config.mongoUrl,
-    db: 'ttracker',
+    url: config.databaseConnection,
+    db: config.databaseName,
     cookie: {maxAge: 1000 * 10}
   })
 }));
