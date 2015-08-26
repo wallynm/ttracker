@@ -12,7 +12,7 @@ var config = {
   prod: {
     mode: 'prod',
     port: process.env.PORT || 3010,
-    mongoUrl: 'mongodb://localhost:27017/ttracker'
+    mongoUrl: 'ds035593.mongolab.com:35593/heroku_cn6vx9lj'
   },
 }
 

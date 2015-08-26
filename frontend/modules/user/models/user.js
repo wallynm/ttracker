@@ -18,6 +18,7 @@ define(function() {
 
     logout: function() {
       var self = this;
+      self.set(self.defaults);
       return $.post('/api/users/logout');
     },
 

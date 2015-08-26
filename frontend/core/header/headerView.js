@@ -8,8 +8,14 @@ define(['text!frontend/core/header/header.html'],
       userName: '.navbar .user'
     },
 
+    updateDisplay: function() {
+      var self = this;
+      self.$el.toggle(!_.isNull(App.User.get('logged')));
+    },
+
     onRender: function() {
       this.ui.userName.text(App.User.get('user'));
+      this.updateDisplay();
     }
   });
 });

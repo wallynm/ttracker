@@ -34,14 +34,30 @@ define(['backbone.radio', 'backbone.subroute'], function() {
       this.promisse.resolve(object);
     },
 
+
+    /**
+     * Execute hoje esta se portando bem, uma vez que o mesmo esta trabalhando
+     * corretamente com as promisses retornadas pelos devidos routers
+     * @param  {Function} callback [description]
+     * @param  {[type]}   args     [description]
+     * @return {[type]}            [description]
+     */
     execute: function(callback, args) {
       var self = this;
       // if (!self.active) {
       //   self.triggerMethod('before:enter:route', args);
       // }
-      self.triggerMethod('before:enter', args);
+      // ;
+      // console.warn(self);
+      // console.warn(self.onBeforeEnter);
 
-      $.when(self._execute(callback, args)).then(function() {
+      // console.warn()
+      var callBefore = Backbone.Radio.channel('router')._events['before:enter'][0]['callback'];
+      var beforeEnter = callBefore.apply(this)
+
+      $.when(beforeEnter)
+      .then(function() {
+        self._execute(callback, args)
         if (!self.active) {
           self.triggerMethod('enter:route', args);
         }
@@ -49,6 +65,15 @@ define(['backbone.radio', 'backbone.subroute'], function() {
       });
     },
 
+    /**
+     * Ainda nao compreendi a intencao do promisse.done, e onde o mesmo deveria ser utilizado
+     * posteriormente irei checar no repositorio oficial o qual dei fork para compreender
+     * a utilização do mesmo em um projeto funcional
+     *
+     * @param  {Function} callback [description]
+     * @param  {[type]}   args     [description]
+     * @return {[type]}            [description]
+     */
     _execute: function(callback, args) {
       var self = this;
       callback.apply(this, args);

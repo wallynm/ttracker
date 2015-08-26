@@ -41,7 +41,6 @@ define(['text!frontend/modules/login/templates/base.html'],
         App.User.login()
         .done(function() {
           if (App.User.get('logged')) {
-            App.layout.showHeader();
             App.Router.navigate('#boards', {trigger: true});
           }
         });

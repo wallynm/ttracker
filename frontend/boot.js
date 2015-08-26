@@ -28,8 +28,7 @@ require(['application', 'userModel', 'backbone', 'backbone.marionette', 'bootstr
 
     logout: function() {
       App.User.logout()
-      .done(function(){
-        App.layout.hideHeader();
+      .done(function() {
         App.Router.navigate('#login', {trigger: true});
       });
     }

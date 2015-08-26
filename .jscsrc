@@ -1,13 +1,13 @@
 {
   "preset": "google",
   "fileExtensions": [ ".js", "jscs" ],
-
-  "requireParenthesesAroundIIFE": true,
+  "requireCurlyBraces" : [{
+    "if": true
+  }],
   "maximumLineLength": 500,
   "validateLineBreaks": "LF",
 
   "safeContextKeyword": "self",
-
   "excludeFiles": [
       "public/**"
   ]

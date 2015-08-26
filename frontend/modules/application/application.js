@@ -1,5 +1,4 @@
 define(['frontend/modules/application/baseLayout'], function(Layout) {
-
   window.routerChannel = Backbone.Radio.channel('router');
 
   return Marionette.Application.extend({
@@ -34,15 +33,13 @@ define(['frontend/modules/application/baseLayout'], function(Layout) {
     },
 
     onBeforeEnterRoute: function() {
+      var defer = $.Deferred();
 
-      // console.warn(this.promisse)
-      //
-      // setTimeout(function() {
-      //   alert('123')
-      //   defer.resolve( "hurray" );
-      // }, 2000 );
-      //
-      // return defer.promise();
+      setTimeout(function() {
+        defer.resolve('hurray');
+      }, 2000);
+
+      return defer;
     },
 
     onEnterRoute: function() {
