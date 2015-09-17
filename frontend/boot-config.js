@@ -27,7 +27,6 @@ requirejs.config({
 
     'application': 'frontend/modules/application/application',
     'userModel': 'frontend/modules/user/models/user',
-    'commonLayout': 'frontend/modules/application/baseLayout'
   },
 
   shim: {
@@ -71,10 +70,7 @@ requirejs.config({
       deps: ['backbone.marionette'],
       exports: 'userModel'
     },
-    commonLayout: {
-      deps: ['backbone.marionette'],
-      exports: 'userModel'
-    },
+
     application: {
       deps: ['backbone.marionette'],
       exports: 'application'

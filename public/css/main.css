@@ -6891,7 +6891,7 @@ button.close {
   min-height: 100%;
   height: auto;
 }
-#app-sidebar {
+#app-sidebar .content {
   top: 0px;
   bottom: 0px;
   position: fixed;
@@ -6900,6 +6900,20 @@ button.close {
   width: 225px;
   height: 100%;
   z-index: 100;
+}
+#app-sidebar .content .navbar {
+  border: 0px;
+  border-radius: 0px;
+  box-shadow: 0px 0px 0px;
+  padding: 20px 30px;
+  background: #ff6321;
+  background: -moz-linear-gradient(-70deg, #ff6321 0%, #ff4e00 50%, #ec4900 50%, #ec4900 50%, #ea5b1e 98%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #ff6321), color-stop(50%, #ff4e00), color-stop(50%, #ec4900), color-stop(50%, #ec4900), color-stop(98%, #ea5b1e));
+  background: -webkit-linear-gradient(-70deg, #ff6321 0%, #ff4e00 50%, #ec4900 50%, #ec4900 50%, #ea5b1e 98%);
+  background: -o-linear-gradient(-70deg, #ff6321 0%, #ff4e00 50%, #ec4900 50%, #ec4900 50%, #ea5b1e 98%);
+  background: -ms-linear-gradient(-70deg, #ff6321 0%, #ff4e00 50%, #ec4900 50%, #ec4900 50%, #ea5b1e 98%);
+  background: linear-gradient(160deg, #ff6321 0%, #ff4e00 50%, #ec4900 50%, #ec4900 50%, #ea5b1e 98%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6321', endColorstr='#ea5b1e', GradientType=1);
 }
 .btn:focus,
 .btn:active:focus,
@@ -7540,6 +7554,7 @@ nav.navbar {
   border-color: #ccc;
   box-shadow: 0 0 2px 0 #ccc;
   min-height: 80px;
+  border-radius: 0px;
 }
 nav.navbar #board-search {
   padding: 9px;

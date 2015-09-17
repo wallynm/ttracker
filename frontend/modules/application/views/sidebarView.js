@@ -1,22 +1,22 @@
-define(['text!frontend/modules/application/templates/header.html'],
+define(['text!frontend/modules/application/templates/sidebar.html'],
   function(tpl) {
   return Backbone.Marionette.ItemView.extend({
     template: _.template(tpl),
-    tagName: 'nav',
-    className: 'navbar',
+    el: "#app-sidebar",
 
-    ui: {
-      logoutButton: '#btn-logout',
-      userName: '.navbar .user'
+    onRender: function() {
+      this.$el.hide();
+      this.$el.html(view.el);
+      this.$el.slideDown("fast");
     },
 
     updateDisplay: function() {
+      console.warn(this._parent);
       var self = this;
       self.$el.toggle(!_.isNull(App.User.get('logged')));
     },
 
     onRender: function() {
-      this.ui.userName.text(App.User.get('user'));
       this.updateDisplay();
     }
   });
