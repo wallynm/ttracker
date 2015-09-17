@@ -1,14 +1,73 @@
+// Specific Class definition
+::-webkit-input-placeholder {
+  color: #6a7887;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:-moz-placeholder {
+  color: #6a7887;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-moz-placeholder {
+  color: #6a7887;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:-ms-input-placeholder {
+  color: #6a7887;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:-webkit-autofill, input:focus:-webkit-autofill {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-box-shadow: 0 0 0px 1000px inherit inset;
+  -webkit-text-fill-color: #FFF !important;
+}
+
+.login-form{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  top: -200px;
+  height: 330px;
+  width: 360px;
+}
+
+
 .login-page {
+  background: @baseColor;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  .text-center{
+    margin-top: 10px;
+    color: #FFF;
+    font-size: 16px;
+     a{
+       color: #FFF !important;
+       text-decoration: underline;
+     }
+  }
+
   .form-login, .form-register, .form-remember {
-    max-width: 330px;
-    padding: 15px;
-    margin: 0 auto;
 
     .form-control {
-      position: relative;
-      font-size: 16px;
+      background: #314458;
+      border-color: #253544;
+      color: #FFF;
+
+      font-size: 14px;
+      padding: 12px;
       height: auto;
-      padding: 10px;
+      position: relative;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
@@ -30,12 +89,6 @@
     }
   }
 
-  .account-wall {
-    margin-top: 80px;
-    padding: 40px 0 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16);
-  }
   .login-title {
     color: #555;
     font-size: 22px;

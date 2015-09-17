@@ -1,4 +1,4 @@
-define(['text!frontend/core/header/header.html'],
+define(['text!frontend/modules/application/templates/header.html'],
   function(tpl) {
   return Backbone.Marionette.ItemView.extend({
     template: _.template(tpl),

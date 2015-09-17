@@ -8,6 +8,17 @@ var wrap = require('co-monk');
 
 module.exports = function(app, route) {
   app.use(route.get('/', function *() {
-    this.body = yield render('index.html');
+    var session = this.session.data;
+    var data = {};
+
+    if (typeof session !== 'undefined' && session !== null) {
+      data.user = {
+        logged : session.logged,
+        user : session.user,
+        email : session.email
+      };
+    }
+
+    this.body = yield render('index.html', {data : data });
   }));
 }

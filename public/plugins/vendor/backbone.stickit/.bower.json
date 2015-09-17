@@ -5,7 +5,6 @@
   "main": [
     "./backbone.stickit.js"
   ],
-  "version": "0.9.2",
   "license": "https://github.com/NYTimes/backbone.stickit/blob/master/LICENSE",
   "keywords": [
     "backbone",
@@ -33,13 +32,13 @@
     "qunit": "1.12.0",
     "zepto-data": "1.0.0"
   },
-  "_release": "0.9.2",
+  "_release": "82cd8f4aca",
   "_resolution": {
-    "type": "version",
-    "tag": "0.9.2",
-    "commit": "d18937c085356dcefc887618b8422660440b534a"
+    "type": "branch",
+    "branch": "master",
+    "commit": "82cd8f4acac9a00a14f1262e29963ae6b035a6c7"
   },
-  "_source": "git://github.com/NYTimes/backbone.stickit.git",
-  "_target": "~0.9.0",
-  "_originalSource": "backbone.stickit"
+  "_source": "https://github.com/wallynm/backbone.stickit.git",
+  "_target": "master",
+  "_originalSource": "https://github.com/wallynm/backbone.stickit.git"
 }

@@ -23,8 +23,13 @@
     "co-views": "^1.0.0",
     "generic-session": "^0.1.0",
     "gulp": "^3.9.0",
+    "gulp-debug": "^2.1.0",
+    "gulp-if": "^1.2.5",
     "gulp-less": "^3.0.3",
+    "gulp-plumber": "^1.0.1",
+    "gulp-print": "^1.1.0",
     "gulp-util": "^3.0.6",
+    "gulp-watch": "^4.3.5",
     "koa": "^0.21.0",
     "koa-generic-session": "^1.9.0",
     "koa-generic-session-mongo": "^0.2.2",
@@ -37,9 +42,13 @@
     "monk": "^1.0.1",
     "passport-github": "^0.1.5",
     "swig": "^1.4.2",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "yargs": "^3.22.2"
   },
   "engines": {
     "node": "0.11.16"
+  },
+  "devDependencies": {
+    "gulp-watch-less": "^1.0.1"
   }
 }

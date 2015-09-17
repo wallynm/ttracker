@@ -1,4 +1,4 @@
-define(['frontend/modules/application/baseLayout'], function(Layout) {
+define(['frontend/modules/application/views/baseLayout'], function(Layout) {
   window.routerChannel = Backbone.Radio.channel('router');
 
   return Marionette.Application.extend({
@@ -16,20 +16,23 @@ define(['frontend/modules/application/baseLayout'], function(Layout) {
 
     onStart: function() {
       var self = this;
+      self.layout = new Layout();
+      self.layout.render();
 
       // Only starts the app once the session has already checkedfd
       App.User.checkSession()
       .done(function() {
         Backbone.history.start();
-        self.layout = new Layout();
-        self.layout.render();
-
         if (App.User.isLogged()) {
           App.Router.navigate('#boards', {trigger: true});
         } else {
           App.Router.navigate('#login', {trigger: true});
         }
       });
+    },
+
+    renderLayout(layout){
+
     },
 
     onBeforeEnterRoute: function() {

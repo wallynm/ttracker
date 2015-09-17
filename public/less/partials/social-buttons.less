@@ -1,0 +1,65 @@
+/*!
+ * Social Buttons for Twitter Bootstrap v1.0.0
+ *
+ * Copyright 2013 Adam Neumann
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ */
+
+ .btn{
+   &.btn-facebook, &.btn-twitter, &.btn-github, &.btn-pinterest, &.btn-linkedin, &.btn-google-plus, &.btn-github{
+     padding: 0px;
+     margin-top: 15px;
+     text-align: left;
+     i{
+       padding: 0px 8px;
+       padding-top: 8px;
+       display: block;
+       float: left;
+       line-height: 32px;
+     }
+     span{
+       display: block;
+       float: left;
+       border-left: 1px solid rgba(0, 0, 0, 0.3);
+       padding: 12px;
+       font-size: 16px;
+     }
+   }
+ }
+
+.btn-lg{
+  &.btn-facebook, &.btn-twitter, &.btn-github, &.btn-pinterest, &.btn-linkedin, &.btn-google-plus, &.btn-github{
+    i{
+      font-size: 32px;
+    }
+    span{
+      padding: 16px;
+      height: 48px;
+    }
+  }
+}
+
+.btn-facebook {
+  .button-variant(#ffffff, #2b4b90, #2b4b90);
+}
+
+.btn-twitter {
+  .button-variant(#ffffff, #1c95d0, #1c95d0);
+}
+
+.btn-github {
+  .button-variant(#ffffff, #383838, #383838);
+}
+
+.btn-pinterest {
+  .button-variant(#ffffff, #c51e25, #c51e25);
+}
+
+.btn-linkedin {
+  .button-variant(#ffffff, #60a9ce, #60a9ce);
+}
+
+.btn-google-plus {
+  .button-variant(#ffffff, #d34332, #d34332);
+}

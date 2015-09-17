@@ -83,8 +83,11 @@
     // can either call `stickit` with the new bindings, or add them directly
     // with `addBinding`. Both arguments to `stickit` are optional.
     stickit: function(optionalModel, optionalBindingsConfig) {
+      // Applies uibondings acordly to marionette.ui property when available
+      var uiBindings = (typeof Marionette !== undefined) ? Marionette.normalizeUIKeys(_.result(this, 'bindings'), _.result(this, '_uiBindings')) : undefined;
+
       var model = optionalModel || this.model,
-          bindings = optionalBindingsConfig || _.result(this, "bindings") || {};
+          bindings = optionalBindingsConfig || uiBindings || _.result(this, 'bindings') || {};
 
       this._modelBindings || (this._modelBindings = []);
 
@@ -462,11 +465,12 @@
         val || (val = []);
         $el.each(function(i, el) {
           var checkbox = Backbone.$(el);
-          var checked = _.contains(val, checkbox.val());
+          var checkboxVal = checkbox.val();
+          var checked = _.some(val, function(item) { return ''+item === checkboxVal; });
           checkbox.prop('checked', checked);
         });
       } else {
-        var checked = _.isBoolean(val) ? val : val === $el.val();
+        var checked = _.isBoolean(val) ? val : ''+val === $el.val();
         $el.prop('checked', checked);
       }
     },
@@ -617,10 +621,18 @@
         var removeAllListeners = function() {
           removeCollectionListeners();
           collection.off('stickit:selectRefresh');
+          collection.off('stickit:selectRefreshForView');
           model.off('stickit:selectRefresh');
         };
-        // Remove previously set event listeners by triggering a custom event
-        collection.trigger('stickit:selectRefresh');
+        collection.trigger('stickit:selectRefreshForView', this.cid);
+        // Compare the view cid on the event to this.cid to ensure we don't
+        // remove events from the collection that are tied to other views.
+        collection.once('stickit:selectRefreshForView', function(viewCid) {
+          if(this.cid == viewCid){
+            // Remove previously set event listeners by triggering a custom event
+            collection.trigger('stickit:selectRefresh');
+          }
+        }, this);
         collection.once('stickit:selectRefresh', removeCollectionListeners, this);
 
         // Listen to the collection and trigger an update of the select options

@@ -25,25 +25,15 @@
     </script>
 
     <link href='public/css/main.css' rel='stylesheet' type='text/css'>
-    <!-- <link href='https://fontastic.s3.amazonaws.com/DUC7rzjjYMrgZo3qPFTZPE/icons.css' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>
-
-    <link href='https://fontastic.s3.amazonaws.com/DUC7rzjjYMrgZo3qPFTZPE/icons.css' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'> -->
-
-
+    <link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
     <script src='public/plugins/chance.min.js'></script>
     <script src="public/plugins/vendor/requirejs/require.js"></script>
     <script src="frontend/boot-config.js"></script>
     <script src="frontend/boot.js"></script>
+    <script>window.data = {{ data|json|raw }}; </script>
   </head>
 
   <body>
-    <div id='app'>
-      <div id='app-header'></div>
-      <div id='app-content'></div>
-    </div>
+    <div id='app'></div>
   </body>
 </html>

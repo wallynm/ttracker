@@ -1,47 +1,50 @@
-<div class="container login-page">
-  <div class="row">
-    <div class="col-sm-6 col-md-4 col-md-offset-4">
-      <div class="account-wall">
-        <div id="my-tab-content" class="tab-content">
-          <div style="text-align: center; padding-bottom: 20px;">
-            <img src="/public/images/logo.png" alt="">
-          </div>
-          <div class="tab-pane active" id="login">
-            <div class="form-login">
-              <input name="email" type="text" class="form-control" placeholder="Username" required autofocus>
-              <input name="pass" type="password" class="form-control bottom10" placeholder="Password">
-              <input type="submit" id="btn-login" class="btn btn-lg btn-default btn-block" value="Sign In" />
-            </div>
-            <div id="tabs" data-tabs="tabs">
-              <p class="text-center"><a href="#register" data-toggle="tab">Need an Account?</a></p>
-              <p class="text-center"><a href="#remember" data-toggle="tab">Forgot Password?</a></p>
-            </div>
+<form action="#">
+  <div class="container login-form">
+    <div id="my-tab-content" class="tab-content">
+      <div style="text-align: center; padding-bottom: 20px;">
+        <img src="/public/images/logo-invert.png" alt="">
+      </div>
+      <div class="tab-pane active" id="login">
+        <div class="form-login bottom20">
+          <input name="email" type="text" class="form-control" placeholder="E-mail" autofocus>
+          <input name="pass" type="password" class="form-control bottom20" placeholder="Password">
+          <input type="submit" id="btn-login" class="btn btn-lg btn-success btn-block" value="Log in"/>
+          <p class="text-center">Don't have an account? <a href="#register" data-toggle="tab">Create Now!</a>
+          <!-- | <a href="#remember" data-toggle="tab">Forgot Password?</a></p> -->
+
+          <div class="divider" style="margin: 35px 0px;">
+            <span> OR </span>
           </div>
 
-          <div class="tab-pane" id="register">
-            <div class="form-register">
-              <input name="user" type="text" name="user" class="form-control" placeholder="User Name" required autofocus>
-              <input name="email" type="email" class="form-control" placeholder="Emaill Address" required style="border-radius: 0px; border-bottom: 0px solid;">
-              <input name="pass" type="password" class="form-control bottom10" placeholder="Password" required>
-              <input type="submit" id="btn-register" class="btn btn-lg btn-default btn-block" value="Sign Up" />
-            </div>
-            <div id="tabs" data-tabs="tabs">
-              <p class="text-center"><a href="#login" data-toggle="tab">Have an Account?</a></p>
-            </div>
-          </div>
+          <button class="btn btn-lg btn-facebook btn-block"><i class="icon icon-facebook"></i><span>Connect with Facebook</span></button>
+          <button class="btn btn-lg btn-google-plus btn-block"><i class="icon icon-googleplus"></i><span>Connect with GooglePlus</span></button>
+          <button class="btn btn-lg btn-github btn-block"><i class="icon icon-github"></i><span>Connect with Github</span></button>
+        </div>
 
-          <div class="tab-pane" id="remember">
-            <div class="form-remember">
-              <input name="email" type="email" class="form-control bottom10" placeholder="Emaill Address" required autofocus>
-              <input type="submit" id="btn-remember" class="btn btn-lg btn-default btn-block" value="Send" />
-            </div>
-            <div id="tabs" data-tabs="tabs">
-              <p class="text-center"><a href="#login" data-toggle="tab">Try to login</a></p>
-            </div>
-          </div>
+      </div>
 
+      <div class="tab-pane" id="register">
+        <div class="form-register">
+          <input name="user" type="text" name="user" class="form-control" placeholder="User Name" autofocus>
+          <input name="email" type="email" class="form-control" placeholder="Emaill Address" style="border-radius: 0px; border-bottom: 0px solid;">
+          <input name="pass" type="password" class="form-control bottom20" placeholder="Password">
+          <button id="btn-register" class="btn btn-lg btn-default btn-block">Sign up</button>
+        </div>
+        <div id="tabs" data-tabs="tabs">
+          <p class="text-center"><a href="#login" data-toggle="tab">Have an Account?</a></p>
         </div>
       </div>
+
+      <div class="tab-pane" id="remember">
+        <div class="form-remember">
+          <input name="email" type="email" class="form-control bottom20" placeholder="Emaill Address" autofocus>
+          <button id="btn-remember" class="btn btn-lg btn-default btn-block">Send</button>
+        </div>
+        <div id="tabs" data-tabs="tabs">
+          <p class="text-center"><a href="#login" data-toggle="tab">Try to login</a></p>
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
+</form>

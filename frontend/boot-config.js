@@ -14,6 +14,7 @@ requirejs.config({
     'backbone.babysitter': 'public/plugins/vendor/backbone.babysitter/src/build/backbone.babysitter',
     'backbone.wreqr': 'public/plugins/vendor/backbone.wreqr/src/build/backbone.wreqr',
     'backbone.subroute': 'public/plugins/vendor/backbone.subroute/backbone.subroute',
+    'backbone.stickit': 'public/plugins/vendor/backbone.stickit/backbone.stickit',
     'underscore': 'public/plugins/vendor/underscore/underscore',
     'helper': 'public/custom/helpers/dist/helper',
 

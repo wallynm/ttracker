@@ -1,4 +1,4 @@
-require(['application', 'userModel', 'backbone', 'backbone.marionette', 'bootstrap', 'bootstrap-dialog', 'localstorage', 'helper'], function(Application, UserModel) {
+require(['application', 'userModel', 'backbone', 'backbone.marionette', 'bootstrap', 'bootstrap-dialog', 'localstorage', 'backbone.stickit', 'helper'], function(Application, UserModel) {
   window.App = new Application();
 
   var MainRouter = Backbone.Router.extend({
@@ -33,9 +33,6 @@ require(['application', 'userModel', 'backbone', 'backbone.marionette', 'bootstr
       });
     }
   });
-
-
-
 
   // Configures the user base model
   App.User = new UserModel();

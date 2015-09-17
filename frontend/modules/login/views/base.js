@@ -2,35 +2,66 @@ define(['text!frontend/modules/login/templates/base.html'],
   function(tpl) {
   return Marionette.ItemView.extend({
     template: _.template(tpl),
-    className: 'login-form',
+    className: 'login-page',
 
     events: {
       'click @ui.loginButton': 'login',
       'click @ui.registerButton': 'register',
-      'click @ui.rememberButton': 'remember'
+      'click @ui.rememberButton': 'remember',
+      'submit @ui.form': 'formSubmit'
     },
 
     ui: {
+      form: 'form',
       loginButton: '#btn-login',
       registerButton: '#btn-register',
       rememberButton: '#btn-remember',
-
       loginEmail: '.form-login [name=email]',
       loginPass: '.form-login [name=pass]',
-
       registerUser: '.form-register [name=user]',
       registerEmail: '.form-register [name=email]',
       registerPass: '.form-register [name=pass]',
-
       rememberEmail: '.form-remember [name=email]',
     },
 
     initialize: function() {
       var self = this;
       self.logged = window.App.User.get('logged');
+      this.stickit(window.App.User);
     },
 
+    /**
+     * Verify the user credentials and redirects the user to the dashboard
+     * @author Wallysson Nunes
+     * @return {Void}
+     */
+
+    redirectDashboard: function() {
+      var self = this;
+      App.User.login()
+      .done(function() {
+        if (App.User.get('logged')) {
+          App.Router.navigate('#boards', {trigger: true});
+        } else {
+          self.showTooltip(self.ui.loginEmail, 'Usuário ou senha inválidos');
+          self.ui.loginPass.val('');
+        }
+      });
+    },
+
+    formSubmit: function() {
+      this.login();
+      return false;
+    },
+
+    /**
+     * Sets the model with the formdata and tries to login user
+     * @author Wallysson Nunes
+     * @return {Void}
+     */
     login: function() {
+      var self = this;
+
       // Configures the login data
       App.User.set({
         email: this.ui.loginEmail.val(),
@@ -38,17 +69,13 @@ define(['text!frontend/modules/login/templates/base.html'],
       });
 
       if (this.validateLogin()) {
-        App.User.login()
-        .done(function() {
-          if (App.User.get('logged')) {
-            App.Router.navigate('#boards', {trigger: true});
-          }
-        });
+        self.redirectDashboard();
       }
     },
 
     /**
-     * Register the current user with the current form data
+     * Register new user with form data and if
+     * successfull redirect user to the dashboard
      */
     register: function() {
       var self = this;
@@ -63,8 +90,8 @@ define(['text!frontend/modules/login/templates/base.html'],
             pass: self.ui.registerPass.val()
           });
 
-          App.User.register();
-          App.User.login();
+          $.when(App.User.register())
+          .then(self.redirectDashboard());
         }
       });
     },

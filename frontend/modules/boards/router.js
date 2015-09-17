@@ -3,7 +3,6 @@ define(['frontend/core/common/router', 'frontend/modules/boards/views/boardLayou
 
     initialize: function(options) {
       this.container = options.container;
-      console.warn(this);
     },
 
     routes: {
