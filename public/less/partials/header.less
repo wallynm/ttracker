@@ -14,25 +14,41 @@ nav.navbar {
     color: #f14444;
   }
 
-  ul.navbar-nav a {
-    color: #f14444;
-    border-style: solid;
-    border-width: 0 0 2px 0;
-    border-color: #fff;
+  ul {
+    .navbar-nav a {
+      color: #f14444;
+      border-style: solid;
+      border-width: 0 0 2px 0;
+      border-color: #fff;
+    }
+    .navbar-nav a:hover,
+    .navbar-nav a:visited,
+    .navbar-nav a:focus,
+    .navbar-nav a:active {
+      background: #fff;
+    }
+    .navbar-nav a:hover {
+      border-color: #f14444;
+    }
+    .divider {
+      background: #ccc;
+    }
+    .dropdown-menu {
+      border: 0;
+      background: #fff;
+      border-radius: 4px;
+      margin: 4px 0;
+      box-shadow: 0 0 4px 0 #ccc;
+    }
+    .dropdown-menu > li > a {
+      color: #444;
+    }
+    .dropdown-menu > li > a:hover {
+      background: #f14444;
+      color: #fff;
+    }
   }
 
-  ul.navbar-nav a:hover,
-  ul.navbar-nav a:visited,
-  ul.navbar-nav a:focus,
-  ul.navbar-nav a:active {
-    background: #fff;
-  }
-  ul.navbar-nav a:hover {
-    border-color: #f14444;
-  }
-  li.divider {
-    background: #ccc;
-  }
   button.navbar-toggle {
     background: #f14444;
     border-radius: 2px;
@@ -43,20 +59,7 @@ nav.navbar {
   button.navbar-toggle > span.icon-bar {
     background: #fff;
   }
-  ul.dropdown-menu {
-    border: 0;
-    background: #fff;
-    border-radius: 4px;
-    margin: 4px 0;
-    box-shadow: 0 0 4px 0 #ccc;
-  }
-  ul.dropdown-menu > li > a {
-    color: #444;
-  }
-  ul.dropdown-menu > li > a:hover {
-    background: #f14444;
-    color: #fff;
-  }
+
   span.badge {
     background: #f14444;
     font-weight: normal;
